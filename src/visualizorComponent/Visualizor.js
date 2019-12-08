@@ -11,7 +11,8 @@ const SWAP_COLOR="yellow";
 const PREVIOUS_COLOR="#0074D9"
 const NEW_COLOR="#00d999";
 const headerStyle = {
-    backgroundColor :"rgb(31, 175, 132)",
+    // backgroundColor :"rgb(31, 175, 132)",
+    backgroundImage: "linear-gradient(rgb(31, 175, 132),rgb(0, 217, 153))",
     height : "40px",
     margin : "auto"
 
@@ -20,7 +21,8 @@ class Visualizor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            arr : []
+            arr : [],
+            active : false
         }
     }
     componentDidMount() {
@@ -58,7 +60,9 @@ class Visualizor extends Component {
         }
         return objArr;
     }
+
     sortHelper(){
+        this.setState({active : true})
         const barArr = document.getElementsByClassName("array-bars");
         const arr=this.bubbleSort()
         // console.table(arr)
@@ -115,34 +119,47 @@ class Visualizor extends Component {
                     break;
                 default : console.log("Something weng wrong!");
             }
+            this.setState({active : false})
         }
     }
-    updateSliderSize(size){
-        this.setState({size})
-    }
-
-
 
     render() {
         const arr = this.state.arr;
-        // const size = this.state.size;
+        const active = this.state.active
         return (
             <div>
                 <div style={headerStyle}>
                     <div style={{width : "500px" , margin : "auto"}}>
-                    <input className={"button"} type="button" align="center" value={"Reset"} onClick={()=>this.resetArray()}/>
-                    <input className={"button"} type={"button"} align="center" onClick={()=>this.sortHelper()} value={"Bubble Sort"}/>
-                    <input className={"button"} type={"button"} align="center" onClick={()=>this.sortHelper()} value={"Selection Sort"}/>
-                    <input className={"button"} type={"button"} align="center" onClick={()=>this.sortHelper()} value={"Insertion Sort"}/>
-                    <input className={"button"} type={"button"} align="center" onClick={()=>this.sortHelper()} value={"Quick Sort"}/>
-
-                        {/*<Slider></Slider>*/}
+                    <input className={"button"}
+                           type="button"
+                           align="center"
+                           value={"Reset"}
+                           onClick={()=>this.resetArray()}/>
+                    <input className={"button"}
+                           type={"button"}
+                           onClick={()=>this.sortHelper()} value={"Bubble Sort"}
+                           disabled={active}
+                    />
+                    <input className={"button"}
+                           type={"button"}
+                           onClick={()=>this.sortHelper()}
+                           value={"Selection Sort"}/>
+                    <input className={"button"} type={"button"}
+                           onClick={()=>this.sortHelper()}
+                           value={"Insertion Sort"}/>
+                    <input className={"button"} type={"button"}
+                           onClick={()=>this.sortHelper()}
+                           value={"Quick Sort"}/>
                     </div>
                 </div>
 
-                <div className="array-container" style={{width : `${(BOX_SIZE+2)*SIZE}px`}}>
+                <div className="array-container"
+                     style={{width : `${(BOX_SIZE+2)*SIZE}px`}}>
                     {arr.map((item , index)=>(
-                         <h1 key={index} className="array-bars" style={{height : `${item}px` ,width : `${BOX_SIZE}px`}}></h1>))}<br/>
+                         <div key={index}
+                              className="array-bars"
+                              style={{height : `${item}px` ,width : `${BOX_SIZE}px`}}>
+                         </div>))}
                 </div>
 
             </div>

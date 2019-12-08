@@ -9,7 +9,7 @@
     display: inline-block;
     vertical-align:top;
     background-color: #0074D9;
-    /*box-shadow: -1px 1px black;*/
+
 }
 .button{
     margin: 5px;
@@ -18,4 +18,8 @@
     background-color: #008CBA;
     border-style: none;
     border: 1px solid;
+}
+.array-bars:hover{
+    box-shadow: -1px 1px black;
+    background-color: black;
 }
