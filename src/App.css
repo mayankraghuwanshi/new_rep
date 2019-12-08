@@ -1,0 +1,10 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #dcdada;
+}
+.App{
+    margin: auto;
+    display: block;
+    width: 100%;
+}
