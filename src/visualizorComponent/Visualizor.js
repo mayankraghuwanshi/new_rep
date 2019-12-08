@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import InputRange from 'react-input-range';
 import './Visualizer.css';
-import Slider from "./Slider";
+
 
 const SPEED = 1;
 const BOX_SIZE=5;
@@ -21,9 +20,7 @@ class Visualizor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            arr : [],
-            swap : 0,
-            size : 1
+            arr : []
         }
     }
     componentDidMount() {
@@ -115,6 +112,8 @@ class Visualizor extends Component {
                     barOneStyle.backgroundColor=PREVIOUS_COLOR;
                     barTwoStyle.backgroundColor=PREVIOUS_COLOR;
                 },i*SPEED)
+                    break;
+                default : console.log("Something weng wrong!");
             }
         }
     }
@@ -126,7 +125,7 @@ class Visualizor extends Component {
 
     render() {
         const arr = this.state.arr;
-        const size = this.state.size;
+        // const size = this.state.size;
         return (
             <div>
                 <div style={headerStyle}>
@@ -142,8 +141,8 @@ class Visualizor extends Component {
                 </div>
 
                 <div className="array-container" style={{width : `${(BOX_SIZE+2)*SIZE}px`}}>
-                    {arr.map(item=>(
-                         <h1 className="array-bars" style={{height : `${item}px` ,width : `${BOX_SIZE}px`}}></h1>))}<br/>
+                    {arr.map((item , index)=>(
+                         <h1 key={index} className="array-bars" style={{height : `${item}px` ,width : `${BOX_SIZE}px`}}></h1>))}<br/>
                 </div>
 
             </div>
