@@ -11,7 +11,6 @@ const SWAP_COLOR="yellow";
 const PREVIOUS_COLOR="#0074D9"
 const NEW_COLOR="#00d999";
 const headerStyle = {
-    // backgroundColor :"rgb(31, 175, 132)",
     backgroundImage: "linear-gradient(rgb(31, 175, 132),rgb(0, 217, 153))",
     height : "40px",
     margin : "auto"
@@ -28,10 +27,10 @@ class Visualizor extends Component {
     componentDidMount() {
         this.resetArray();
     }
-
+    
     resetArray(){
         const size=SIZE;
-        const min=5;
+        const min=15;
         const max=500;
         const arr = [];
         for(let i=0;i<size;i++){
@@ -42,7 +41,7 @@ class Visualizor extends Component {
 
     bubbleSort(){
         const objArr = []
-        let arr = this.state.arr;
+        let arr = this.state.arr.slice();
         for(let i=0;i<arr.length;i++){
             for(let j=i+1;j<arr.length;j++){
                 objArr.push({case : 1,start : i,end : j})
@@ -62,7 +61,8 @@ class Visualizor extends Component {
     }
 
     sortHelper(){
-        this.setState({active : true})
+        // this.setState({active : true})
+        console.log("before loop")
         const barArr = document.getElementsByClassName("array-bars");
         const arr=this.bubbleSort()
         // console.table(arr)
@@ -119,9 +119,10 @@ class Visualizor extends Component {
                     break;
                 default : console.log("Something weng wrong!");
             }
-            this.setState({active : false})
         }
+        console.log("after loop")
     }
+
 
     render() {
         const arr = this.state.arr;
@@ -132,13 +133,13 @@ class Visualizor extends Component {
                     <div style={{width : "500px" , margin : "auto"}}>
                     <input className={"button"}
                            type="button"
-                           align="center"
                            value={"Reset"}
-                           onClick={()=>this.resetArray()}/>
+                           onClick={()=>this.resetArray()}
+                    />
                     <input className={"button"}
                            type={"button"}
-                           onClick={()=>this.sortHelper()} value={"Bubble Sort"}
-                           disabled={active}
+                           onClick={()=>this.sortHelper()}
+                           value={"Bubble Sort"}
                     />
                     <input className={"button"}
                            type={"button"}
@@ -159,7 +160,7 @@ class Visualizor extends Component {
                          <div key={index}
                               className="array-bars"
                               style={{height : `${item}px` ,width : `${BOX_SIZE}px`}}>
-                         </div>))}
+                             </div>))}
                 </div>
 
             </div>
