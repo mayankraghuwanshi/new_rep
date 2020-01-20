@@ -1,16 +1,20 @@
 import React, {Component} from 'react';
+import {useState} from "react";
 import './Visualizer.css';
 import bubbleSort from '../Algorithm/bubbleSort'
 import insertionSort from '../Algorithm/insertionSort'
 import selectionSort from '../Algorithm/selectionSort'
 import driver from "./driver"
 
+function print() {
+    console.log("hello")
+}
 class Visualizer extends Component {
     constructor(props) {
         super(props);
         this.state = {
             arr : [],
-            active : false,
+            disable : false,
             SPEED: 10,
             SIZE : 60,
         }
@@ -28,10 +32,21 @@ class Visualizer extends Component {
             arr.push(Math.floor(Math.random() * (max - min + 1) + min))
         }
         this.setState({arr});
-        // this.render();
+        this.colorReset()
+
     }
-    visualize(sortingAlgo){
-        driver(this.state.arr,sortingAlgo,this.state.SPEED,this.state.SIZE);
+    colorReset(){
+        const barArr = document.getElementsByClassName("array-bars");
+        const arr = this.state.arr;
+        for(let i=0;i<arr.length;i++){
+            barArr[i].style.backgroundColor="#0074D9";
+        }
+    }
+
+    visualize(sortingAlgo,print){
+        this.setState({disable : true})
+        driver(this.state.arr,sortingAlgo,this.state.SPEED,this.state.SIZE,this.enableButton);
+        setTimeout(()=>this.setState({disable : false}),10000)
     }
 
     onSlideHandler(e){
@@ -46,29 +61,36 @@ class Visualizer extends Component {
         // const SPEED = this.state.SPEED;
         const SIZE = this.state.SIZE;
         const BOX_SIZE = Math.floor(800/SIZE);
+        const disable = this.state.disable
         return (
             <div>
                 <div className="Headder">
-                    <div style={{width : "700px" , margin : "auto"}}>
+                    <div style={{width : "700px" , margin : "auto" }}>
                         <input className={"button"}
                                type="button"
                                value={"Reset"}
-                               onClick={()=>this.resetArray()}
+                               onClick={()=>disable?"":this.resetArray()}
+                               style={{cursor : `${disable?"wait":"pointer"}`}}
                         />
                         <input className={"button"}
                                type={"button"}
-                               onClick={()=>this.visualize(bubbleSort)}
+                               onClick={()=>disable?"":this.visualize(bubbleSort)}
                                value={"Bubble Sort"}
+                               style={{cursor : `${disable?"wait":"pointer"}`}}
                         />
                         <input className={"button"}
                                type={"button"}
-                               onClick={()=>this.visualize(insertionSort)}
-                               value={"Insertion Sort"}/>
+                               onClick={()=>disable?"":this.visualize(insertionSort)}
+                               value={"Insertion Sort"}
+                               style={{cursor : `${disable?"wait":"pointer"}`}}
+                        />
                         <input className={"button"}
                                type={"button"}
-                               onClick={()=>this.visualize(selectionSort)}
-                               value={"Selection Sort"}/>
-                        <input className="slider" type={"range"} value={this.state.SIZE} min = "20" max = "100" onChange={(e)=>this.onSlideHandler(e)}/>
+                               onClick={()=>disable?"":this.visualize(selectionSort)}
+                               value={"Selection Sort"}
+                               style={{cursor : `${disable?"wait":"pointer"}`}}
+                        />
+                        <input className="slider" type={"range"} value={this.state.SIZE} min = "20" max = "100" onChange={(e)=>this.onSlideHandler(e)} disabled={disable}/>
                     </div>
                 </div>
 
@@ -77,8 +99,8 @@ class Visualizer extends Component {
                     {arr.map((item , index)=>(
                         <div key={index}
                              className="array-bars"
-                             style={{fontSize : `${BOX_SIZE/2.5}px`,  height : `${item}px` ,width : `${BOX_SIZE}px`}}>
-                            {BOX_SIZE>=15?item:""}
+                             style={{fontSize : `${BOX_SIZE/3}px`,  height : `${item}px` ,width : `${BOX_SIZE}px`}}>
+                            {item}
                         </div>))}
                 </div>
                 <div class = "footer">

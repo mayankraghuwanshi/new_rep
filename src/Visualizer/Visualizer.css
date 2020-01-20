@@ -49,6 +49,7 @@
     margin-top: 8px;
     width: 200px;
     margin : 30px;
+    /*-webkit-appearance: none;*/
 }
 .footer{
     background-color: #483d8b;

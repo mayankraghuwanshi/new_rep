@@ -10,7 +10,7 @@ const COMPARE_CASE = 1,
     NEW_SORTED_COLOR_CASE = 4,
     PREVIOUS_COLOR_CASE = 5;
 
-module.exports = function driver (arr , algorithm , speed, size) {
+module.exports = function driver (arr , algorithm , speed, size,enableButton) {
     const SPEED = ((speed**2)/size);
     const barArr = document.getElementsByClassName("array-bars");
     const Arr=algorithm(arr)
@@ -66,4 +66,5 @@ module.exports = function driver (arr , algorithm , speed, size) {
             default : console.log("Something weng wrong!");
         }
     }
+    // setTimeout(()=>{enableButton()},Arr.length*SPEED);
 }
