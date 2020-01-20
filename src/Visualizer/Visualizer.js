@@ -21,7 +21,7 @@ class Visualizer extends Component {
 
     resetArray(){
         const size=this.state.SIZE;
-        const min=15;
+        const min=20;
         const max=500;
         const arr = [];
         for(let i=0;i<size;i++){
@@ -77,7 +77,8 @@ class Visualizer extends Component {
                     {arr.map((item , index)=>(
                         <div key={index}
                              className="array-bars"
-                             style={{height : `${item}px` ,width : `${BOX_SIZE}px`}}>
+                             style={{fontSize : `${BOX_SIZE/2.5}px`,  height : `${item}px` ,width : `${BOX_SIZE}px`}}>
+                            {BOX_SIZE>=15?item:""}
                         </div>))}
                 </div>
                 <div class = "footer">
