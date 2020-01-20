@@ -29,10 +29,14 @@
     height: 40px;
     background-color: #008CBA;
     /*color : white;*/
+    font-size: 15px;
     border-style: none;
     border: 1px solid;
     text-transform: uppercase;
     font-family: "Lucida Console";
+}
+.button:hover{
+    cursor: pointer;
 }
 .array-bars:hover{
     box-shadow: -1px 1px black;
