@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
-import {useState} from "react";
 import './Visualizer.css';
 import bubbleSort from '../Algorithm/bubbleSort'
 import insertionSort from '../Algorithm/insertionSort'
 import selectionSort from '../Algorithm/selectionSort'
 import driver from "./driver"
 
-function print() {
-    console.log("hello")
-}
+
 class Visualizer extends Component {
     constructor(props) {
         super(props);
@@ -65,10 +62,10 @@ class Visualizer extends Component {
         return (
             <div>
                 <div className="Headder">
-                    <div style={{width : "700px" , margin : "auto" }}>
+                    <div style={{width : "780px" , margin : "auto" }}>
                         <input className={"button"}
                                type="button"
-                               value={"Reset"}
+                               value={"Array Reset"}
                                onClick={()=>disable?"":this.resetArray()}
                                style={{cursor : `${disable?"wait":"pointer"}`}}
                         />
