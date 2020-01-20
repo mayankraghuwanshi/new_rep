@@ -28,6 +28,7 @@ class Visualizer extends Component {
             arr.push(Math.floor(Math.random() * (max - min + 1) + min))
         }
         this.setState({arr});
+        // this.render();
     }
     visualize(sortingAlgo){
         driver(this.state.arr,sortingAlgo,this.state.SPEED,this.state.SIZE);
@@ -44,7 +45,7 @@ class Visualizer extends Component {
         // const active = this.state.active;
         // const SPEED = this.state.SPEED;
         const SIZE = this.state.SIZE;
-        const BOX_SIZE = Math.floor(700/SIZE);
+        const BOX_SIZE = Math.floor(800/SIZE);
         return (
             <div>
                 <div className="Headder">
@@ -72,7 +73,7 @@ class Visualizer extends Component {
                 </div>
 
                 <div className="array-container"
-                     style={{width : `${(BOX_SIZE+2)*SIZE}px`}}>
+                     style={{width :"100%"}}>
                     {arr.map((item , index)=>(
                         <div key={index}
                              className="array-bars"
