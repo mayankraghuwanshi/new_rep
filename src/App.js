@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Visualizor from "./visualizorComponent/Visualizor";
+import Visualizor from "./Visualizer/Visualizer";
 function App() {
     return <div className={"App"}>
         <Visualizor/>

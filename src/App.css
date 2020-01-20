@@ -2,6 +2,7 @@ body {
     padding: 0;
     margin: 0;
     background-color: #dcdada;
+    font-family: "Lucida Console";
 }
 .App{
     margin: auto;

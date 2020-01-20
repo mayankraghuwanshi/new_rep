@@ -1,6 +1,14 @@
+.Headder{
+    background-color: #483d8b;
+    height : 80px;
+    line-height: 80px;
+    margin : auto;
+}
+
 .array-container{
     margin: auto;
     width: 90%;
+    /*background-color: #dcdada;*/
 
 }
 .array-bars{
@@ -18,12 +26,27 @@
 .button{
     margin: 5px;
     border-radius: 2px;
-    height: 30px;
+    height: 40px;
     background-color: #008CBA;
+    /*color : white;*/
     border-style: none;
     border: 1px solid;
+    text-transform: uppercase;
+    font-family: "Lucida Console";
 }
 .array-bars:hover{
     box-shadow: -1px 1px black;
     background-color: black;
+}
+
+.slider{
+    position: absolute;
+    margin-top: 8px;
+    width: 200px;
+    margin : 30px;
+}
+.footer{
+    background-color: #483d8b;
+    height: 20vh;
+    width: 100%;
 }
