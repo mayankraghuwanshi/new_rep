@@ -41,6 +41,7 @@ class Visualizer extends Component {
     }
 
     visualize(sortingAlgo,print){
+        this.resetArray();
         this.setState({disable : true})
         driver(this.state.arr,sortingAlgo,this.state.SPEED,this.state.SIZE,this.enableButton);
         setTimeout(()=>this.setState({disable : false}),10000)
@@ -92,7 +93,7 @@ class Visualizer extends Component {
                 </div>
 
                 <div className="array-container"
-                     style={{width :"100%"}}>
+                     style={{width :"100%" , height : "500px"}}>
                     {arr.map((item , index)=>(
                         <div key={index}
                              className="array-bars"

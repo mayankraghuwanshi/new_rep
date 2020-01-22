@@ -11,7 +11,7 @@ const insertionSort = (Arr) => {
         for(let j=i+1;j<arr.length;j++){
             //COMPARE
             objArr.push({case : COMPARE,start : i,end : j})
-            if(arr[i]<arr[j]){
+            if(arr[i]>arr[j]){
                 //SWAP
                 objArr.push({case : SWAP , start : i , end : j , barOneHeight : `${arr[j]}px`,barTwoHeight : `${arr[i]}px`})
                 const temp = arr[i];
