@@ -1,10 +1,17 @@
 import React from 'react';
 import './App.css';
-import Visualizor from "./Components/sortingComponents/SortVisualizer";
+import {BrowserRouter as Router, Route,} from "react-router-dom";
+
+import SortVisualizer from "./Components/sorting/SortVisualizer";
+import PathfindingVisualizer from "./Components/pathfinding/pathfindingVisualizer";
 function App() {
-    return <div className={"App"}>
-        <Visualizor/>
-    </div>
+    return <Router>
+                <div className={"App"}>
+                    <Route exact path="/" component = {SortVisualizer}/>
+                    <Route exact path="/pathfinding" component = {PathfindingVisualizer}/>
+                </div>
+            </Router>
 }
+
 
 export default App;

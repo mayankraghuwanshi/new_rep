@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import './SortVisualizer.css';
-import bubbleSort from '../../Algorithms/sortingAlgorithms/bubbleSort'
-import insertionSort from '../../Algorithms/sortingAlgorithms/insertionSort'
-import selectionSort from '../../Algorithms/sortingAlgorithms/selectionSort'
+import bubbleSort from '../../Algorithms/sorting/bubbleSort'
+import insertionSort from '../../Algorithms/sorting/insertionSort'
+import selectionSort from '../../Algorithms/sorting/selectionSort'
 import driver from "./visualizerHelper"
+import Header from '../Header'
+import Button from '../Button';
 
 
 class SortVisualizer extends Component {
@@ -62,35 +64,15 @@ class SortVisualizer extends Component {
         const disable = this.state.disable
         return (
             <div>
-                <div className="Headder">
+                <Header className="Headder">
                     <div style={{width : "780px" , margin : "auto" }}>
-                        <input className={"button"}
-                               type="button"
-                               value={"Array Reset"}
-                               onClick={()=>disable?"":this.resetArray()}
-                               style={{cursor : `${disable?"wait":"pointer"}`}}
-                        />
-                        <input className={"button"}
-                               type={"button"}
-                               onClick={()=>disable?"":this.visualize(bubbleSort)}
-                               value={"Bubble Sort"}
-                               style={{cursor : `${disable?"wait":"pointer"}`}}
-                        />
-                        <input className={"button"}
-                               type={"button"}
-                               onClick={()=>disable?"":this.visualize(insertionSort)}
-                               value={"Insertion Sort"}
-                               style={{cursor : `${disable?"wait":"pointer"}`}}
-                        />
-                        <input className={"button"}
-                               type={"button"}
-                               onClick={()=>disable?"":this.visualize(selectionSort)}
-                               value={"Selection Sort"}
-                               style={{cursor : `${disable?"wait":"pointer"}`}}
-                        />
+                        <Button value = "Array Reset" onClickListener={()=>this.resetArray()} disable={disable}/>
+                        <Button value = "Bubble Sort" onClickListener={()=>this.visualize(bubbleSort)} disable={disable}/>
+                        <Button value = "Insertion Sort" onClickListener={()=>this.visualize(insertionSort)} disable={disable}/>
+                        <Button value = "Selection Sort" onClickListener={()=>this.visualize(selectionSort)} disable={disable}/>
                         <input className="slider" type={"range"} value={this.state.SIZE} min = "20" max = "100" onChange={(e)=>this.onSlideHandler(e)} disabled={disable}/>
                     </div>
-                </div>
+                </Header>
 
                 <div className="array-container"
                      style={{width :"100%" , height : "500px"}}>
