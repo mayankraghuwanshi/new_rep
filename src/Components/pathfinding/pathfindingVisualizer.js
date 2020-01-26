@@ -4,7 +4,7 @@ import Dijakstra from '../../Algorithms/pathfinding/Dijakstra';
 import Header from "../Header";
 import Button from "../Button";
 
-const NO_OF_ROWS = 20;
+const NO_OF_ROWS = 23;
 const NO_OF_COLUMS = 61;
 const SPEED = 10;
 class PathfindingVisualizer extends Component {
@@ -12,13 +12,13 @@ class PathfindingVisualizer extends Component {
         super();
         this.state = {
             grid : [],
-            START_ROW: 5,
+            START_ROW: 15,
             START_COL : 0,
             FINISH_ROW : 15,
-            FINISH_COL : 19,
+            FINISH_COL : 59,
             SPEED: SPEED,
             processing : false,
-            size : 25
+            size : 0,
         }
     }
     createNode(row,col){
@@ -47,7 +47,9 @@ class PathfindingVisualizer extends Component {
     }
 
     componentDidMount() {
-
+        const width = window.innerWidth;
+        const size = Math.floor(width/NO_OF_COLUMS);
+        this.setState({size})
         this.initGrid();
     }
 
@@ -92,7 +94,7 @@ class PathfindingVisualizer extends Component {
     }
 
     render() {
-        const {grid} = this.state;
+        const {grid,size} = this.state;
         if(grid.length!==0){
             // this.test()
             return (<div style={{backgroundColor : "white"}} >
@@ -110,6 +112,7 @@ class PathfindingVisualizer extends Component {
                                         isFinish={isFinish}
                                         isStart={isStart}
                                         isWall={isWall}
+                                        width = {size}
                                     />)
                                 })}</div>
                             })}
