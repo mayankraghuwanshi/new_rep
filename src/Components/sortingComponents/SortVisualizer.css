@@ -10,9 +10,7 @@
     margin: auto;
 }
 .array-bars{
-    /*width: 2px;*/
     box-sizing: border-box;
-    /* margin: 0px 1px; */
     display: inline-block;
     vertical-align:top;
     background-color: #0074D9;
@@ -21,8 +19,10 @@
     padding-top: 5px;
     text-align: center;
     font-size: 5px;
-
-
+}
+.array-bars:hover{
+    box-shadow: -1px 1px black;
+    background-color: black;
 }
 .button{
     margin: 5px;
@@ -39,10 +39,7 @@
 .button:hover{
     cursor: pointer;
 }
-.array-bars:hover{
-    box-shadow: -1px 1px black;
-    background-color: black;
-}
+
 
 .slider{
     position: absolute;

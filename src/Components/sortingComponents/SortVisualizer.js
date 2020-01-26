@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import './Visualizer.css';
-import bubbleSort from '../Algorithm/bubbleSort'
-import insertionSort from '../Algorithm/insertionSort'
-import selectionSort from '../Algorithm/selectionSort'
-import driver from "./driver"
+import './SortVisualizer.css';
+import bubbleSort from '../../Algorithms/sortingAlgorithms/bubbleSort'
+import insertionSort from '../../Algorithms/sortingAlgorithms/insertionSort'
+import selectionSort from '../../Algorithms/sortingAlgorithms/selectionSort'
+import driver from "./visualizerHelper"
 
 
-class Visualizer extends Component {
+class SortVisualizer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -109,4 +109,4 @@ class Visualizer extends Component {
     }
 }
 
-export default Visualizer;
+export default SortVisualizer;
