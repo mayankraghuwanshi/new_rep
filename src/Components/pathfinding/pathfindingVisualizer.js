@@ -60,8 +60,9 @@ class PathfindingVisualizer extends Component {
             }else{
                 const node = animation[i];
                 const isStart = node.isStart;
+                const isFinish = node.isFinish;
                 setTimeout(()=>{
-                    document.getElementById(`node-${node.row}-${node.col}`).className=`${isStart?"node start":"node visited"}`
+                    document.getElementById(`node-${node.row}-${node.col}`).className=`${isStart?"node visited start":isFinish ?"node finish visited" :"node visited"}`
                 },SPEED*i)
             }
         }
@@ -75,7 +76,8 @@ class PathfindingVisualizer extends Component {
                 const row = currentNode.row;
                 const col = currentNode.col;
                 const isStart = currentNode.isStart;
-                setTimeout(()=>document.getElementById(`node-${row}-${col}`).className=`${isStart?"node start":'node shortestPath'}` ,SPEED*i)
+                const isFinish = currentNode.isFinish
+                setTimeout(()=>document.getElementById(`node-${row}-${col}`).className=`${isStart?"node shortedPath start": isFinish ?" node finish shortedPath" :'node shortestPath'}` ,SPEED*i)
                 i++;
                 currentNode=currentNode.parent;
             }else if(currentNode.parent==null){

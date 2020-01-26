@@ -8,12 +8,18 @@
 
 
 .finish {
-    background-image: url("../../flower.png");
+    /*background-image: url("../../flower.png");*/
+    background-image: url("https://www.pngarts.com/files/2/Left-Arrow-PNG-Free-Download.png");
+    transform: rotate(180deg);
     background-size: cover;
+    z-index: 5;
+
 }
 
 .start {
-    background-image: url("../../flower.png");
+    background-image: url("https://www.pngarts.com/files/2/Left-Arrow-PNG-Free-Download.png");
+    z-index: 2;
+    transform: rotate(180deg);
     background-size: cover;
     /*animation: rotate 2s infinite;*/
 }

@@ -7,8 +7,8 @@ import PathfindingVisualizer from "./Components/pathfinding/pathfindingVisualize
 function App() {
     return <Router>
                 <div className={"App"}>
-                    <Route path="/" exact component = {SortVisualizer}/>
-                    <Route path="/pathfinding" exact component = {PathfindingVisualizer}/>
+                    <Route path={process.env.PUBLIC_URL + '/'} exact component = {SortVisualizer}/>
+                    <Route path={process.env.PUBLIC_URL + '/pathfinding'} exact component = {PathfindingVisualizer}/>
                 </div>
             </Router>
 }
