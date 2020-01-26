@@ -5,10 +5,11 @@ import {BrowserRouter as Router, Route,} from "react-router-dom";
 import SortVisualizer from "./Components/sorting/SortVisualizer";
 import PathfindingVisualizer from "./Components/pathfinding/pathfindingVisualizer";
 function App() {
-    return <Router>
+
+    return <Router basename={process.env.PUBLIC_URL}>
                 <div className={"App"}>
-                    <Route path={process.env.PUBLIC_URL + '/'} exact component = {SortVisualizer}/>
-                    <Route path={process.env.PUBLIC_URL + '/pathfinding'} exact component = {PathfindingVisualizer}/>
+                    <Route exact path={'/'} component = {SortVisualizer}/>
+                    <Route exact path={'/pathfinding'} component = {PathfindingVisualizer}/>
                 </div>
             </Router>
 }

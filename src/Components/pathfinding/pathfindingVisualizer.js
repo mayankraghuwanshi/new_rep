@@ -3,8 +3,9 @@ import Node from "./Node";
 import Dijakstra from '../../Algorithms/pathfinding/Dijakstra';
 import Header from "../Header";
 import Button from "../Button";
+import Footer from './footer'
 
-const NO_OF_ROWS = 23;
+const NO_OF_ROWS = 20;
 const NO_OF_COLUMS = 61;
 const SPEED = 10;
 class PathfindingVisualizer extends Component {
@@ -99,11 +100,11 @@ class PathfindingVisualizer extends Component {
         const {grid,size} = this.state;
         if(grid.length!==0){
             // this.test()
-            return (<div style={{backgroundColor : "white"}} >
+            return (<div>
                         <Header textAlign={true}  width = {"100%"}>
                             <Button value="Visualize Dijakstra" onClickListener={()=>this.visualizeDijakstra()} disable={false} />
                         </Header>
-                        <div style={{textAlign : "center"}}>
+                        <div style={{textAlign : "center",backgroundColor : "white"}}>
                             {grid.map((row , rowId)=>{
                                 return <div style = {{height : "25px"}} key={rowId}>{row.map((node,nodeId)=>{
                                     const {row,col,isFinish,isStart,isWall} = node
@@ -119,7 +120,8 @@ class PathfindingVisualizer extends Component {
                                 })}</div>
                             })}
                         </div>
-                    </div>);
+                <Footer/>
+            </div>);
         }else{
             return <div>
                 <h1>Loading</h1>

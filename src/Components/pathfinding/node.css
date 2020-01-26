@@ -74,6 +74,7 @@
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     animation-play-state: running;
+    outline: none;
 }
 
 @keyframes shortestPath {
